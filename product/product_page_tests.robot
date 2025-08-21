@@ -74,9 +74,11 @@ Login To SauceDemo
     Click Button   ${LOGIN_BTN}
     Wait Until Location Contains    /inventory.html    10s
 
+*** Keywords ***
 Click Elements
     [Arguments]    ${locator}
     ${els}=    Get WebElements    ${locator}
-    FOR    ${i}    IN RANGE    0    ${len(${els})}
-        Click Element    ${els}[${i}]
+    FOR    ${el}    IN    @{els}
+        Scroll Element Into View    ${el}
+        Click Element    ${el}
     END
