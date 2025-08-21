@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-08-21T11:52:37.144392" rpa="false" schemaversion="5">
+<suite id="s1" name="Cart Page Tests" source="D:\ROBOT\product\cart_page_tests.robot">
+<kw name="Prepare Cart Suite" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:37.498133" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:37.497877" elapsed="1.814945"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${USER_INPUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.313031" elapsed="0.015069"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.328537" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<arg>${USER_INPUT}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.328274" elapsed="0.129514"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.458230" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<arg>${PASS_INPUT}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.457994" elapsed="0.092131"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.550723" level="INFO">Clicking button 'id=login-button'.</msg>
+<arg>${LOGIN_BTN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.550364" elapsed="0.112283"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/inventory.html</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.662821" elapsed="0.006012"/>
+</kw>
+<kw name="Click First N Adds">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${BTN_ADD}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.669704" elapsed="0.011488"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.688244" level="INFO">${els} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.3606332A1194D71E0ADD41680CB808C6.e.25")&gt;, &lt;selenium.webdriv...</msg>
+<var>${els}</var>
+<arg>${BTN_ADD}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.681350" elapsed="0.006946"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-21T11:52:39.688587" level="INFO">Length is 6.</msg>
+<msg time="2025-08-21T11:52:39.688675" level="INFO">${count} = 6</msg>
+<var>${count}</var>
+<arg>${els}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.688442" elapsed="0.000262"/>
+</kw>
+<if>
+<branch type="IF" condition="${count} &lt; ${n}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Not enough items to add: found ${count}, need ${n}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-21T11:52:39.689035" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2025-08-21T11:52:39.688810" elapsed="0.000302"/>
+</branch>
+<status status="PASS" start="2025-08-21T11:52:39.688780" elapsed="0.000378"/>
+</if>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.689728" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.3606332A1194D71E0ADD41680CB808C6.e.25")&gt;'.</msg>
+<arg>${els}[${i}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.689521" elapsed="0.046895"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-08-21T11:52:39.689419" elapsed="0.047078"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.736990" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.3606332A1194D71E0ADD41680CB808C6.e.26")&gt;'.</msg>
+<arg>${els}[${i}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.736769" elapsed="0.038017"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2025-08-21T11:52:39.736658" elapsed="0.038212"/>
+</iter>
+<var>${i}</var>
+<value>0</value>
+<value>${n}</value>
+<status status="PASS" start="2025-08-21T11:52:39.689213" elapsed="0.085725"/>
+</for>
+<arg>2</arg>
+<status status="PASS" start="2025-08-21T11:52:39.669322" elapsed="0.105726"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.775381" level="INFO">Clicking element 'css:a.shopping_cart_link'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.775176" elapsed="0.060116"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/cart.html</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.835462" elapsed="0.004938"/>
+</kw>
+<status status="PASS" start="2025-08-21T11:52:37.496717" elapsed="2.343799"/>
+</kw>
+<test id="s1-t1" name="TC-101 View Cart" line="27">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.841934" level="INFO">Opening url 'https://www.saucedemo.com/cart.html'</msg>
+<arg>${BASE_URL}cart.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.841649" elapsed="0.079952"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CART_ITEM}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.922226" elapsed="0.070206"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:39.999246" level="INFO">Current page contains element 'css:div.cart_item'.</msg>
+<arg>${CART_ITEM}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:39.992795" elapsed="0.006615"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2025-08-21T11:52:40.125183" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-53.png"&gt;&lt;img src="selenium-screenshot-53.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.000162" elapsed="0.125184"/>
+</kw>
+<doc>แสดงสินค้าที่ถูกเพิ่มลงในตะกร้า</doc>
+<status status="PASS" start="2025-08-21T11:52:39.840611" elapsed="0.285047"/>
+</test>
+<test id="s1-t2" name="TC-104 Remove Item" line="33">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.128271" level="INFO">Opening url 'https://www.saucedemo.com/cart.html'</msg>
+<arg>${BASE_URL}cart.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.128094" elapsed="0.062131"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.224842" level="INFO">${before} = 2</msg>
+<var>${before}</var>
+<arg>${CART_ITEM}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.190877" elapsed="0.034012"/>
+</kw>
+<kw name="Click First Remove">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.237557" level="INFO">${els} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.A5E9EF682DC164E2A7268D683FCED949.e.49")&gt;, &lt;selenium.webdriv...</msg>
+<var>${els}</var>
+<arg>${BTN_REMOVE}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.225521" elapsed="0.012087"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.237969" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.A5E9EF682DC164E2A7268D683FCED949.e.49")&gt;'.</msg>
+<arg>${els}[0]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.237756" elapsed="0.050544"/>
+</kw>
+<status status="PASS" start="2025-08-21T11:52:40.225270" elapsed="0.063230"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Validate Cart Count Decreased">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.297306" level="INFO">${after} = 1</msg>
+<var>${after}</var>
+<arg>${CART_ITEM}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.289634" elapsed="0.007718"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${before - 1}</arg>
+<arg>${after}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.297496" elapsed="0.000604"/>
+</kw>
+<arg>${before}</arg>
+<status status="PASS" start="2025-08-21T11:52:40.289293" elapsed="0.008888"/>
+</kw>
+<arg>5x</arg>
+<arg>1s</arg>
+<arg>Validate Cart Count Decreased</arg>
+<arg>${before}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.288864" elapsed="0.009374"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2025-08-21T11:52:40.380787" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-54.png"&gt;&lt;img src="selenium-screenshot-54.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.298662" elapsed="0.082260"/>
+</kw>
+<doc>ลบสินค้าออกจากตะกร้า 1 รายการ และตรวจสอบจำนวนในตะกร้าลดลง</doc>
+<status status="PASS" start="2025-08-21T11:52:40.127043" elapsed="0.254226"/>
+</test>
+<test id="s1-t3" name="TC-105 Empty Cart" line="40">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.383867" level="INFO">Opening url 'https://www.saucedemo.com/cart.html'</msg>
+<arg>${BASE_URL}cart.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.383719" elapsed="0.050347"/>
+</kw>
+<kw name="Click All Removes">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.472313" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.9C1CD2D1C86D57FFE77B5AB4B0FFD9DE.e.62")&gt;]</msg>
+<var>${elements}</var>
+<arg>${BTN_REMOVE}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.435243" elapsed="0.037116"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.472908" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.9C1CD2D1C86D57FFE77B5AB4B0FFD9DE.e.62")&gt;'.</msg>
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.472726" elapsed="0.056285"/>
+</kw>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.9C1CD2D1C86D57FFE77B5AB4B0FFD9DE.e.62")&gt;</var>
+<status status="PASS" start="2025-08-21T11:52:40.472622" elapsed="0.056468"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="PASS" start="2025-08-21T11:52:40.472453" elapsed="0.056694"/>
+</for>
+<status status="PASS" start="2025-08-21T11:52:40.434746" elapsed="0.094493"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain Element" owner="SeleniumLibrary">
+<arg>${CART_ITEM}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` disappears from the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.529676" elapsed="0.008784"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.549875" level="INFO">Current page contains element 'id=continue-shopping'.</msg>
+<arg>${BTN_CONTINUE}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.538791" elapsed="0.011172"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2025-08-21T11:52:40.644608" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-55.png"&gt;&lt;img src="selenium-screenshot-55.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.550415" elapsed="0.094292"/>
+</kw>
+<doc>ลบสินค้าทั้งหมดให้ตะกร้าว่าง</doc>
+<status status="PASS" start="2025-08-21T11:52:40.382955" elapsed="0.262097"/>
+</test>
+<test id="s1-t4" name="TC-106 Cart Badge Sync" line="47">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.647451" level="INFO">Opening url 'https://www.saucedemo.com/inventory.html'</msg>
+<arg>${BASE_URL}inventory.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.647309" elapsed="0.051114"/>
+</kw>
+<kw name="Click First N Adds">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${BTN_ADD}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.699294" elapsed="0.053198"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.762391" level="INFO">${els} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.C74AFBC51DB678C185896467C14A6F08.e.83")&gt;, &lt;selenium.webdriv...</msg>
+<var>${els}</var>
+<arg>${BTN_ADD}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.752731" elapsed="0.009713"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-21T11:52:40.762795" level="INFO">Length is 6.</msg>
+<msg time="2025-08-21T11:52:40.762875" level="INFO">${count} = 6</msg>
+<var>${count}</var>
+<arg>${els}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.762592" elapsed="0.000310"/>
+</kw>
+<if>
+<branch type="IF" condition="${count} &lt; ${n}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Not enough items to add: found ${count}, need ${n}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-21T11:52:40.763473" elapsed="0.000073"/>
+</kw>
+<status status="NOT RUN" start="2025-08-21T11:52:40.763156" elapsed="0.000440"/>
+</branch>
+<status status="PASS" start="2025-08-21T11:52:40.763094" elapsed="0.000548"/>
+</if>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.764310" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.C74AFBC51DB678C185896467C14A6F08.e.83")&gt;'.</msg>
+<arg>${els}[${i}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.764080" elapsed="0.046229"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-08-21T11:52:40.763990" elapsed="0.046419"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.810856" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.C74AFBC51DB678C185896467C14A6F08.e.84")&gt;'.</msg>
+<arg>${els}[${i}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.810643" elapsed="0.044652"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2025-08-21T11:52:40.810540" elapsed="0.044839"/>
+</iter>
+<var>${i}</var>
+<value>0</value>
+<value>${n}</value>
+<status status="PASS" start="2025-08-21T11:52:40.763733" elapsed="0.091719"/>
+</for>
+<arg>2</arg>
+<status status="PASS" start="2025-08-21T11:52:40.698985" elapsed="0.156577"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.856278" level="INFO">Clicking element 'css:a.shopping_cart_link'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.855955" elapsed="0.067263"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.932454" level="INFO">${in_cart} = 2</msg>
+<var>${in_cart}</var>
+<arg>${CART_ITEM}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.923595" elapsed="0.008905"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:40.959469" level="INFO">${badge} = 2</msg>
+<var>${badge}</var>
+<arg>${CART_BADGE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.932870" elapsed="0.026643"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-08-21T11:52:40.960158" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${in_cart}</arg>
+<arg>${badge}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.959868" elapsed="0.000374"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2025-08-21T11:52:41.037646" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-56.png"&gt;&lt;img src="selenium-screenshot-56.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-21T11:52:40.960594" elapsed="0.077187"/>
+</kw>
+<doc>ตรวจสอบตัวเลข badge บนไอคอนตะกร้าให้ตรงกับจำนวนสินค้า</doc>
+<status status="PASS" start="2025-08-21T11:52:40.646279" elapsed="0.391775"/>
+</test>
+<test id="s1-t5" name="TC-107 Proceed To Checkout" line="56">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.040042" level="INFO">Opening url 'https://www.saucedemo.com/inventory.html'</msg>
+<arg>${BASE_URL}inventory.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.039890" elapsed="0.054359"/>
+</kw>
+<kw name="Click First N Adds">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${BTN_ADD}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.095491" elapsed="0.043808"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.148477" level="INFO">${els} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.C421007232E00E28AD42939D876DAB3A.e.105")&gt;, &lt;selenium.webdri...</msg>
+<var>${els}</var>
+<arg>${BTN_ADD}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.139531" elapsed="0.008994"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-08-21T11:52:41.148807" level="INFO">Length is 4.</msg>
+<msg time="2025-08-21T11:52:41.148886" level="INFO">${count} = 4</msg>
+<var>${count}</var>
+<arg>${els}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.148670" elapsed="0.000244"/>
+</kw>
+<if>
+<branch type="IF" condition="${count} &lt; ${n}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Not enough items to add: found ${count}, need ${n}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-21T11:52:41.149230" elapsed="0.000030"/>
+</kw>
+<status status="NOT RUN" start="2025-08-21T11:52:41.149006" elapsed="0.000298"/>
+</branch>
+<status status="PASS" start="2025-08-21T11:52:41.148984" elapsed="0.000359"/>
+</if>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.149830" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="48b6fc106b6d6f55705e6927403618ba", element="f.037951DFB4EB0AAE7564DE63637BA485.d.C421007232E00E28AD42939D876DAB3A.e.105")&gt;'.</msg>
+<arg>${els}[${i}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.149644" elapsed="0.044453"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-08-21T11:52:41.149560" elapsed="0.044615"/>
+</iter>
+<var>${i}</var>
+<value>0</value>
+<value>${n}</value>
+<status status="PASS" start="2025-08-21T11:52:41.149384" elapsed="0.044846"/>
+</for>
+<arg>1</arg>
+<status status="PASS" start="2025-08-21T11:52:41.095014" elapsed="0.099311"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.194858" level="INFO">Clicking element 'css:a.shopping_cart_link'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.194630" elapsed="0.056817"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${BTN_CHECKOUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.251910" elapsed="0.015520"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.268059" level="INFO">Clicking button 'id=checkout'.</msg>
+<arg>${BTN_CHECKOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.267851" elapsed="0.087392"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/checkout-step-one.html</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.355792" elapsed="0.006068"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2025-08-21T11:52:41.446449" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-57.png"&gt;&lt;img src="selenium-screenshot-57.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.362295" elapsed="0.084302"/>
+</kw>
+<doc>ไปหน้า Checkout ได้จากตะกร้า</doc>
+<status status="PASS" start="2025-08-21T11:52:41.039143" elapsed="0.407744"/>
+</test>
+<test id="s1-t6" name="TC-112 Cart Icon Navigation" line="65">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.449052" level="INFO">Opening url 'https://www.saucedemo.com/inventory.html'</msg>
+<arg>${BASE_URL}inventory.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.448909" elapsed="0.050928"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CART_ICON}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.500323" elapsed="0.044072"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-21T11:52:41.545257" level="INFO">Clicking element 'css:a.shopping_cart_link'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.544870" elapsed="0.071413"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/cart.html</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.616675" elapsed="0.005792"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2025-08-21T11:52:41.715496" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-58.png"&gt;&lt;img src="selenium-screenshot-58.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.623125" elapsed="0.092470"/>
+</kw>
+<doc>คลิกไอคอนตะกร้าจาก inventory แล้วต้องไป /cart.html</doc>
+<status status="PASS" start="2025-08-21T11:52:41.448058" elapsed="0.267841"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-21T11:52:41.717172" elapsed="2.195582"/>
+</kw>
+<status status="PASS" start="2025-08-21T11:52:37.146096" elapsed="6.766740"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Cart Page Tests" id="s1" pass="6" fail="0" skip="0">Cart Page Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
